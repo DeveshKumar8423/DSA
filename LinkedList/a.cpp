@@ -20,66 +20,65 @@ void Insert_at_Head(Node* &head, int d) {
     head = temp;
 }
 
-void print(Node* head) {
+void Insert_at_Tail(Node* &head, int d) {
+    // new node create
+    Node* temp = new Node(d);
+    if (head == NULL) {
+        head = temp;
+        return;
+    }
+    Node* tail = head;
+    while (tail->next != NULL) {
+        tail = tail->next;
+    }
+    tail->next = temp;
+}
+
+void Delete_Node(Node* &head, int key) {
+    if (head == NULL) return;
+
+    Node* temp = head;
+    if (head->data == key) {
+        head = head->next;
+        delete temp;
+        return;
+    }
+
+    Node* prev = NULL;
+    while (temp != NULL && temp->data != key) {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    if (temp == NULL) return;
+
+    prev->next = temp->next;
+    delete temp;
+}
+
+void Display(Node* head) {
     Node* temp = head;
     while (temp != NULL) {
-        cout << temp->data << " ";
+        cout << temp->data << " -> ";
         temp = temp->next;
     }
-    cout << endl;
+    cout << "NULL" << endl;
 }
 
-void Insert_at_tail(Node* &tail, int d) {
-    Node* temp = new Node(d);
-    tail->next = temp;
-    tail = temp;
-}
+int main(){
+    Node* head = NULL;
 
-void Insert_at_position(Node* &head, Node* &tail, int position, int d) {
-    if (position == 1) {
-        Insert_at_Head(head, d);
-        return;
-    }
+    Insert_at_Head(head, 10);
+    Insert_at_Head(head, 20);
+    Insert_at_Tail(head, 30);
+    Insert_at_Tail(head, 40);
 
-    Node* temp = head;
-    int cnt = 1;
+    cout << "Linked List: ";
+    Display(head);
 
-    while (cnt < position - 1) {
-        temp = temp->next;
-        cnt++;
-    }
+    Delete_Node(head, 20);
+    cout << "After Deletion: ";
+    Display(head);
 
-    // Inserting at last position
-    if (temp->next == NULL) {
-        Insert_at_tail(tail, d);
-        return;
-    }
-
-    // creating a node for d
-    Node* nodeToInsert = new Node(d);
-    nodeToInsert->next = temp->next;
-    temp->next = nodeToInsert;
-}
-
-int main() {
-    // create a new node
-    Node *node1 = new Node(10);
-    cout << node1->data << endl;
-    cout << node1->next << endl;
-
-    // head pointed to the node
-    Node* head = node1;
-    Node* tail = node1;
-
-    print(head);
-    cout << endl;
-
-    Insert_at_Head(head, 9);
-    Insert_at_Head(head, 5);
-    Insert_at_position(head, tail, 1, 103);
-    Insert_at_tail(tail, 12);
-    Insert_at_tail(tail, 20);
-
-    print(head);
-
+    return 0;
 }
