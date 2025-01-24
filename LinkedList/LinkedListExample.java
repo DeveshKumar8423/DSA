@@ -4,25 +4,25 @@ public class LinkedListExample{
     public static void main(String[] args){
         LinkedList<String> list = new LinkedList<>();
 
-        list.add("Apple");
-        list.add("Banana");
-        list.add("Cherry");
+        list.add("Red");
+        list.add("Blue");
+        list.add("Green");
         System.out.println("List: " + list);
 
-        list.add(1, "Mango");
-        System.out.println("adding Mango  " + list);
+        list.add(1, "Yellow");
+        System.out.println("adding Yellow  " + list);
 
-        list.remove("Banana");
-        System.out.println("removing Banana " + list);
+        list.remove("Blue");
+        System.out.println("removing Blue " + list);
 
         String firstElement = list.get(0);
         System.out.println("First Element " + firstElement);
 
-        list.set(2, "Grapes");
+        list.set(2, "Purple");
         System.out.println("updating " + list);
 
-        boolean hascherry = list.contains("Cherry");
-        System.out.println(" contain Cherry " + hascherry);
+        boolean hasGreen = list.contains("Green");
+        System.out.println(" contain Green " + hasGreen);
 
         System.out.println("Iterating ");
         for (String item : list) {

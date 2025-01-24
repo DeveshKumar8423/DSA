@@ -1,5 +1,22 @@
 {
     "files.associations": {
         "ostream": "cpp"
-    }
+    },
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "xprotocol",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "MYSQL Local",
+            "database": "demo",
+            "username": "root",
+            "password": "devesh",
+            "connectionTimeout": 30
+        }
+    ]
 }
